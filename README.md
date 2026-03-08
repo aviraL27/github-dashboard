@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# GitHub Developer Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern developer dashboard that visualizes GitHub profile data.
+Search any GitHub username to view profile details, repository analytics, language distribution, and top starred repositories.
 
-Currently, two official plugins are available:
+The project focuses on clean React architecture, API integration, and data visualization.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Search any GitHub user
+* View profile information
+* Repository statistics
+* Total stars across repositories
+* Language distribution chart
+* Top repositories by stars
+* Scrollable repository list
+* Debounced search to reduce API calls
+* Responsive dashboard layout
+* Loading skeleton UI
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Frontend:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* React
+* Vite
+* TypeScript
+* TailwindCSS
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Data & Visualization:
+
+* Axios
+* Recharts
+
+Utilities:
+
+* Debounce for optimized API requests
+
+---
+
+## Project Structure
+
+```
+src
+ ├ components
+ │   ├ SearchBar
+ │   ├ ProfileCard
+ │   ├ StatsCards
+ │   ├ LanguageChart
+ │   ├ StarsChart
+ │   ├ RepoList
+ │   └ Skeleton
+ │
+ ├ pages
+ │   └ Dashboard
+ │
+ ├ services
+ │   └ githubApi
+ │
+ ├ utils
+ │   └ debounce
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The **Dashboard page acts as the data container**, fetching GitHub data and passing it down to presentational components.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+Clone the repository:
+
 ```
+git clone https://github.com/aviraL27/github-dashboard.git
+cd github-dashboard
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the development server:
+
+```
+npm run dev
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the project root.
+
+```
+VITE_GITHUB_TOKEN=your_github_token
+```
+
+GitHub authenticated requests increase the rate limit from **60 requests/hour to 5000 requests/hour**.
+
+---
+
+## Build
+
+Create a production build:
+
+```
+npm run build
+```
+
+Preview production build locally:
+
+```
+npm run preview
+```
+
+---
+
+## Future Improvements
+
+* Improved dashboard layout
+* Additional repository analytics
+* More advanced data visualizations
+* Better caching for GitHub API requests
+* UI polish and accessibility improvements
+
+---
+
+## License
+
+MIT
