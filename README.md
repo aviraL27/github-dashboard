@@ -118,18 +118,3 @@ Preview production build locally:
 npm run preview
 ```
 
----
-
-## Future Improvements
-
-* Improved dashboard layout
-* Additional repository analytics
-* More advanced data visualizations
-* Better caching for GitHub API requests
-* UI polish and accessibility improvements
-
----
-
-## License
-
-MIT
